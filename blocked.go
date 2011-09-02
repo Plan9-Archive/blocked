@@ -24,7 +24,7 @@ func block2body(path string, w *acme.Win) {
 		if err == os.EOF {
 			break
 		}
-		b := line[:n]
+		b := strings.TrimRight(string(line[:n]), " ")
 		w.Printf("body", "%s\n", b)
 	}
 }
@@ -76,5 +76,4 @@ func main() {
 			w.WriteEvent(ev)
 		}
 	}
-	fmt.Printf("closed!\n")
 }
